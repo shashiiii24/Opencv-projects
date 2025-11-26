@@ -56,7 +56,117 @@ ChatWithMe delivers real-time responses, typing animations, feedback learning, a
 
 ---
 
+
+
+                    ┌──────────────────────┐
+                    │      User Input       │
+                    │  (Streamlit Chat UI)  │
+                    └───────────┬───────────┘
+                                │
+                                ▼
+                    ┌──────────────────────┐
+                    │   Streamlit Frontend │
+                    │  - Displays messages │
+                    │  - Typing animation  │
+                    │  - Feedback buttons  │
+                    └───────────┬───────────┘
+                                │  HTTP POST (JSON)
+                                ▼
+                    ┌──────────────────────┐
+                    │      n8n Webhook     │
+                    │ Receives user prompt │
+                    └───────────┬───────────┘
+                                │
+                                ▼
+                   ┌────────────────────────┐
+                   │       AI Agent Node     │
+                   │ - Handles prompt logic  │
+                   │ - Checks feedback flag  │
+                   │ - Routes to Gemini      │
+                   └───────────┬────────────┘
+                               │
+                               ▼
+                 ┌────────────────────────────┐
+                 │  Google Gemini AI (LLM)     │
+                 │ Generates intelligent reply │
+                 └───────────┬────────────────┘
+                               │
+                               ▼
+                   ┌────────────────────────┐
+                   │  Memory Buffer (optional)│
+                   │ Maintains chat context   │
+                   └───────────┬─────────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Send response to UI  │
+                    └───────────┬──────────┘
+                                │
+                                ▼
+                    ┌──────────────────────┐
+                    │ Streamlit Chat UI    │
+                    │  - Typing animation  │
+                    │  - Show regenerate   │
+                    │  - Show feedback     │
+                    └──────────────────────┘
+
+
+
+  🧠 Explanation (Simple & Clear)
+1. User → Streamlit
+
+User sends a message through the chat UI.
+
+2. Streamlit → n8n Webhook
+
+Request is converted into JSON and sent to your n8n webhook.
+
+3. Webhook → AI Agent
+
+AI Agent:
+
+Reads the prompt
+
+Checks if "feedback" exists
+
+Sends query to Gemini
+
+4. Gemini → AI Agent
+
+Google Gemini generates the reply.
+
+5. AI Agent → Streamlit
+
+Response is sent back to Streamlit.
+
+6. Streamlit:
+
+Shows typing animation
+
+Displays the answer
+
+Shows feedback buttons
+
+Hides buttons after feedback
+
+
 ## 📸 UI Preview  
-  "C:\Users\Shashi Kiran T\OneDrive\画像\Screenshots\Screenshot 2025-11-26 222308.png"
+  <img width="1919" height="873" alt="Screenshot 2025-11-26 222308" src="https://github.com/user-attachments/assets/1810a11a-f245-4881-9705-a654cf776455" />
+
+ ---
+
+ ## ChatWthME Architecture Diagram
+
+ <img width="1024" height="1536" alt="ChatGPT Image Nov 26, 2025, 11_57_25 PM" src="https://github.com/user-attachments/assets/0b5c4194-2d36-4500-8f0f-90b794a2f596" />
+
+
+ ---
+
+
+ 
+
+
+
+
 
 
