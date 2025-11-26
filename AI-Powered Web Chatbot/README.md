@@ -57,6 +57,6 @@ ChatWithMe delivers real-time responses, typing animations, feedback learning, a
 ---
 
 ## 📸 UI Preview  
-*("C:\Users\Shashi Kiran T\OneDrive\画像\Screenshots\Screenshot 2025-11-26 222308.png")*  
+  "C:\Users\Shashi Kiran T\OneDrive\画像\Screenshots\Screenshot 2025-11-26 222308.png"
 
 
